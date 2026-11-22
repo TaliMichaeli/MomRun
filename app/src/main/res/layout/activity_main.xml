@@ -1,19 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="8dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- MARK: Lives -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView android:id="@+id/main_IMG_life0" style="@style/LifeIcon" />
+        <ImageView android:id="@+id/main_IMG_life1" style="@style/LifeIcon" />
+        <ImageView android:id="@+id/main_IMG_life2" style="@style/LifeIcon" />
+    </LinearLayout>
+
+    <!-- MARK: Game grid -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Row 0 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_0_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_0_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_0_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Row 1 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_1_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_1_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_1_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Row 2 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_2_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_2_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_2_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Row 3 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_3_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_3_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_3_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Row 4 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_4_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_4_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_4_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Row 5 -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_obstacle_5_0" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_5_1" style="@style/GridCell" android:src="@drawable/poop" />
+            <ImageView android:id="@+id/main_IMG_obstacle_5_2" style="@style/GridCell" android:src="@drawable/poop" />
+        </LinearLayout>
+
+        <!-- Player row -->
+        <LinearLayout style="@style/GridRow">
+            <ImageView android:id="@+id/main_IMG_player_0" style="@style/GridCell" android:src="@drawable/baby_cry" />
+            <ImageView android:id="@+id/main_IMG_player_1" style="@style/GridCell" android:src="@drawable/baby_cry" />
+            <ImageView android:id="@+id/main_IMG_player_2" style="@style/GridCell" android:src="@drawable/baby_cry" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- MARK: Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/main_FAB_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_left"
+            android:contentDescription="@string/move_left" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/main_FAB_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_right"
+            android:contentDescription="@string/move_right" />
+    </LinearLayout>
+
+</LinearLayout>
