@@ -2,4 +2,7 @@
     <string name="app_name">MomRun</string>
     <string name="move_left">Move left</string>
     <string name="move_right">Move right</string>
+    <string name="hit_poop">💩 Oh no! You stepped in poop!</string>
+    <string name="hit_diaper">🤢 Ew! A dirty diaper!</string>
+    <string name="hit_toy">🧸 Ouch! You stepped on a toy!</string>
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MomRun</string>
+    <string name="move_left">הזזה שמאלה</string>
+    <string name="move_right">הזזה ימינה</string>
+    <string name="hit_poop">💩 אוי לא! דרכת בקקי!</string>
+    <string name="hit_diaper">🤢 איכס! טיטול מלוכלך!</string>
+    <string name="hit_toy">🧸 אאוץ\'! דרכת על צעצוע!</string>
+</resources>

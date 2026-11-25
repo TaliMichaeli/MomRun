@@ -8,6 +8,7 @@ object Constants {
 
     object Timer {
         const val DELAY: Long = 600L
+        const val VIBRATION: Long = 300L
     }
 
     object StateKeys {

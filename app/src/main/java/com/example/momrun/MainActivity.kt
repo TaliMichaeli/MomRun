@@ -1,15 +1,21 @@
 package com.example.momrun
 
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.momrun.logic.GameManager
+import com.example.momrun.model.ObstacleType
 import com.example.momrun.utilities.Constants
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -26,6 +32,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var main_IMG_lives: Array<AppCompatImageView>
 
     private lateinit var main_IMG_obstacles: Array<Array<AppCompatImageView>>
+
+    private var toast: Toast? = null
 
     private val handler = Handler(Looper.getMainLooper())
 
@@ -99,10 +107,41 @@ class MainActivity : AppCompatActivity() {
 
     private fun gameTick() {
         val hit = gameManager.tick()
-        if (hit != null) {
-            // Step 7: Toast + vibration
-        }
+        if (hit != null)
+            crash(hit)
         refreshUI()
+    }
+
+    private fun crash(obstacle: ObstacleType) {
+        showToast(getString(obstacle.messageRes))
+        vibrate()
+    }
+
+    private fun showToast(message: String) {
+        toast?.cancel()
+        toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        toast?.show()
+    }
+
+    private fun vibrate() {
+        val vibrator: Vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            (getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            vibrator.vibrate(
+                VibrationEffect.createOneShot(
+                    Constants.Timer.VIBRATION,
+                    VibrationEffect.DEFAULT_AMPLITUDE
+                )
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            vibrator.vibrate(Constants.Timer.VIBRATION)
+        }
     }
 
     private fun refreshUI() {
